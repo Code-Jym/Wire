@@ -6,6 +6,6 @@ With **Wire**, you can do all that.
 Creating a simple Wire is as easy as this:
 
 ```python
-from Wire import Wire
+from wire import Wire
 wire = Wire("I am a wire, stronger than a string")
 ```
