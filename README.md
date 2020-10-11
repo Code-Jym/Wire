@@ -1,6 +1,6 @@
 # Wire
 
-Python strings, they are very simple and powerful ways of storing data. However, there are just some things strings just *cant* do.
+Python strings, they are very simple and powerful ways of storing data. However, there are just some things strings just *can't* do.
 
 With **Wire**, you can do all that.
 Creating a simple Wire is as easy as this:
