@@ -35,7 +35,6 @@ class TestExtraWireFunctions(TestCase):
         wire = Wire("Tester")
         wire = wire.removeDuplicate(inOrder=False)
         singles = ""
-        
         for letter in list(wire):
             # This is a tricky bit of code here (don't let it confuse you)
             # What it does is it asserts that the letter is not in singles
@@ -44,8 +43,20 @@ class TestExtraWireFunctions(TestCase):
             # If there is a duplicate letter, then AssertionError would be made.
             self.assertNotIn(letter, singles)
             singles += letter
+        
+        wire = Wire("Tester")
+        wire = wire.removeDuplicate(caseSensitive=False)
+        singles = ""
+        for letter in list(wire):
+            # Same as above
+            self.assertNotIn(letter.lower(), singles)
+            singles += letter
+        
+        wire = Wire("Tester")
+        wire = wire.removeDuplicate(inOrder=False, caseSensitive=False)
 
 class TestWireDunderFunctions(TestCase):
+
     def testMul(self):
         wire = Wire("Test")
         self.assertEqual((wire * 2), ("TestTest"))
