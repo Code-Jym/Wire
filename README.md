@@ -2,7 +2,6 @@
 
 Python strings, they are very simple and powerful ways of storing data. However, there are just some things strings just *can't* do.
 
-
 With **Wire**, you can do all that.
 Creating a simple Wire is as easy as this:
 
@@ -10,14 +9,17 @@ Creating a simple Wire is as easy as this:
 from wire import Wire
 wire = Wire("I am a wire, stronger than a string")
 ```
+
 ## Installation
-```
+
+The Installation is a simple as:
+
+```bash
 pip install wire
 ```
-or
-```
-git clone https://github.com/Code-Jym/wire.git
-cd wire
-./setup.sh
-```
 
+## Notes
+
+- All the return values for Wire are string objects (except for the ones getting a numerical value)
+- This has not been tested on Non-Linux Operating Systems
+- This is a basic re-implementation of string

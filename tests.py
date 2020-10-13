@@ -54,6 +54,61 @@ class TestExtraWireFunctions(TestCase):
         
         wire = Wire("Tester")
         wire = wire.removeDuplicate(inOrder=False, caseSensitive=False)
+    
+    def testReplace(self):
+        """
+        Tests Wire.replace()
+        Tests with:
+        - Wire.replace(old, new, count=1)
+        - Wire.replace(old, new, count=2)
+        - Wire.replace(old, new, count=None)
+        """
+        wire = Wire("Testing 1 2 3 Testing 1 2 3")
+        wire = wire.replace("Testing", "Success", count=1)
+        self.assertEqual(wire, "Success 1 2 3 Testing 1 2 3")
+
+        wire = Wire("Testing 1 2 3 Testing 1 2 3 Testing")
+        wire = wire.replace("Testing", "Success", count=2)
+        self.assertEqual(wire, "Success 1 2 3 Success 1 2 3 Testing")
+
+        wire = Wire("Testing Testing Testing 1 2 3 Testing")
+        wire = wire.replace("Testing", "Success", count=None)
+        self.assertEqual(wire, "Success Success Success 1 2 3 Success")
+    
+    def testFormat(self):
+        """
+        Tests Wire.format()
+        """
+        var = "Test"
+        wire = Wire("This is a {}").format(var)
+        self.assertEqual(wire, "This is a Test")
+    
+    def testSwap(self):
+        """
+        Tests Wire.swap()
+        """
+        wire = Wire("Test")
+        wire = wire.swap(0, 3)
+        self.assertEqual(wire, "tesT")
+    
+    def testForEach(self):
+        """
+        Tests Wire.forEach()
+        """
+        wire = Wire("test")
+        print("\n")
+        print("Testing Wire.forEach()")
+        wire = wire.forEach(print)
+        self.assertEqual(wire, [None, None, None, None])
+    
+    def testSort(self):
+        """
+        Tests Wire.sort
+        """
+        wire = Wire("bacd")
+        wire = wire.sort()
+        self.assertEqual(wire, "abcd")
+    
 
 class TestWireDunderFunctions(TestCase):
 
@@ -76,6 +131,25 @@ class TestWireDunderFunctions(TestCase):
     def testLen(self):
         wire = Wire("Test")
         self.assertEqual(len(wire), 4)
+    
+    def testGetItem(self):
+        wire = Wire("Test")
+        self.assertEqual(wire[0], "T")
+        self.assertEqual(wire["T"], 0)
+
+    def testSetItem(self):
+        wire = Wire("Test")
+        wire["T"] = 3
+        self.assertEqual(str(wire), "tesT")
+        wire[0] = "J"
+        self.assertEqual(str(wire), "JesT")
+    
+    def testLoop(self):
+        wire = Wire("Test")
+        print("\n")
+        for i in wire:
+            print(i)
+        self.assertEqual(1, 1) # Pass
     
 
 if __name__ == "__main__":

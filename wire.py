@@ -5,10 +5,59 @@ class Wire():
     """
     Wire. Python Strings but better.
     """
+
     def __init__(self, wire):
         self.wire = wire
 
     """Basic Dunder Operations"""
+
+    def __getitem__(self, key):
+        """
+        Returns the index if the key is a string or Wire
+        else, it returns the key itself
+        """
+        if type(key) == str or type(key) == Wire:
+            return self.wire.index(key)
+        else:
+            return self.wire[key]
+    
+    def __setitem__(self, key, value):
+        """
+        If the key is a string, it finds the index of the string swaps 
+        the string index with the given index, for example:
+
+        >>> wire = Wire("Hello world")
+        >>> wire["H"] = 9
+        >>> wire
+        dello worlH
+
+        If the key is an integer, it replaces the value of that index 
+        with another one:
+
+        >>> wire = Wire("Hello world")
+        >>> wire[0] = "J"
+        >>> wire
+        Jello World
+        """
+        if type(key) == str or type(key) == Wire:
+            string = self.wire
+            indexOne = string.index(key)
+            indexTwo = value
+            self.swap(indexOne, indexTwo)
+
+        else:
+            string = list(self.wire)
+            string[key] = value
+            newString = ""
+
+            for i in string:
+                newString += i
+            self.wire = newString
+
+        return self.wire
+
+            
+
     def __repr__(self):
         """
         Returns wire
@@ -84,7 +133,8 @@ class Wire():
 
         return len(self.wire)
     
-    """Functions that are reimplementations of strings"""
+    """Functions that are reimplementations of string functions"""
+
     def replace(self, old, new, count=None):
         """
         Replaces a the character(s) in a wire with other character(s)
@@ -94,7 +144,25 @@ class Wire():
         If count == None, then it will replace instances of the character(s)
         to be replaced
         """
-        self.wire.replace(old, new, count)
+        if count == None:
+            self.wire = self.wire.replace(old, new)
+        else:
+            self.wire = self.wire.replace(old, new, count)
+        return self.wire
+    
+    def format(self, *args, **kwargs):
+        """
+        Does the same thing as str.format()
+        >>> name = "Wire"
+        >>> wire = Wire("hi {}")
+        >>> wire.format(name)
+        hi wire
+        or more concisely ...
+        >>> name = "Wire"
+        >>> wire = Wire("hi {}").format(name) # with the same result
+        hi wire
+        """
+        self.wire = self.wire.format(*args, **kwargs)
         return self.wire
 
 
@@ -141,6 +209,10 @@ class Wire():
         """
         Removes a duplicate  letter from a wire
         NOTE: not having it in order, and not having it caseSensitive is the fastest
+        >>> wire = Wire("Hello")
+        >>> wire.removeDuplicate()
+        >>> wire
+        Helo
         """
 
         singles = ""
@@ -168,22 +240,26 @@ class Wire():
         Equivalent of:
         >>> for i in wire:
         ...    action(i, *args, **kwargs)
-        yields the result of each action
+        returns the result of each action as a list
         NOTE: the letter being processed has to be the first argument 
         """
-
+        results = []
         for letter in self.wire:
-            yield action(letter, *args, **kwargs)
+            results.append(action(letter, *args, **kwargs))
+        return results
 
     def sort(self, reverse=False):
 
         """
         Sorts the string in ascii order 
+        >>> wire = Wire("Hello world")
+        >>> wire.sort()
+        dlrow olleH
         """
 
         string = list(self.wire)
         # Turns it into ascii
-        asciiList = [chr(i) for i in string]
+        asciiList = [ord(i) for i in string]
 
         # Sorts the asciiList
         if reverse == True:
@@ -199,4 +275,18 @@ class Wire():
         self.wire = string
 
         return self.wire
-        
+    
+    def swap(self, indexOne, indexTwo):
+        """
+        Swaps indexOne with indexTwo
+        >>> wire = Wire("Fido")
+        >>> wire.swap(0, 2)
+        diFo
+        """
+        example = list(self.wire)
+        example[indexOne], example[indexTwo] = example[indexTwo], example[indexOne]
+        string = ""
+        for i in example:
+            string += i
+        self.wire = string
+        return self.wire
