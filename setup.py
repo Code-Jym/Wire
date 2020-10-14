@@ -7,7 +7,7 @@ with open(path.join(f"{this_directory}", 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name="Wire-String",
+    name="SWire",
     packages=setuptools.find_packages(),
     version="0.1",
     license="MIT",
