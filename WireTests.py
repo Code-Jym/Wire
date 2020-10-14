@@ -95,11 +95,12 @@ class TestExtraWireFunctions(TestCase):
         """
         Tests Wire.forEach()
         """
+        def mul2(thing):
+            return thing * 2
+
         wire = Wire("test")
-        print("\n")
-        print("Testing Wire.forEach()")
-        wire = wire.forEach(print)
-        self.assertEqual(wire, [None, None, None, None])
+        wire = wire.forEach(mul2)
+        self.assertEqual(wire, ["tt", "ee", "ss", "tt"])
     
     def testSort(self):
         """
@@ -146,9 +147,12 @@ class TestWireDunderFunctions(TestCase):
     
     def testLoop(self):
         wire = Wire("Test")
-        print("\n")
+
+        def mul(i):
+            return i * 2
+
         for i in wire:
-            print(i)
+            mul(i)
         self.assertEqual(1, 1) # Pass
     
 
