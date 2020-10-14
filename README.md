@@ -18,6 +18,8 @@ The Installation is a simple as:
 pip install wire
 ```
 
+With a simple interface and powerful management tools. Strings will be a thing of the past.
+
 ## Notes
 
 - All the return values for Wire are string objects (except for the ones getting a numerical value)
