@@ -19,6 +19,7 @@ pip install wire
 ```
 
 With a simple interface and powerful management tools. Strings will be a thing of the past.
+Docs can be found [here](https://github.com/Code-Jym/wire/blob/main/docs.md)
 
 ## Notes
 
