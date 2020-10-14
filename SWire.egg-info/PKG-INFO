@@ -1,5 +1,5 @@
 Metadata-Version: 1.1
-Name: Wire-String
+Name: SWire
 Version: 0.1
 Summary: Python Strings But Better
 Home-page: https://github.com/Code-Jym/wire
@@ -28,7 +28,7 @@ Description: # Wire
         ```
         
         With a simple interface and powerful management tools. Strings will be a thing of the past.
-        Docs can be found [here](https://github.com/Code-Jym/wire/blob/main/docs.md)
+        Docs can be found [here](https://github.com/Code-Jym/wire/blob/main/wire/docs.md)
         
         ## Notes
         
