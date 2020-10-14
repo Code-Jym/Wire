@@ -88,7 +88,7 @@ l
 d
 ```
 
-## Note
+### Note;
 
 `Wire.forEach` is the equivalent of:
 
