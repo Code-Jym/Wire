@@ -1,11 +1,18 @@
+import setuptools
 from distutils.core import setup
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+
+with open(path.join(f"{this_directory}", 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
-    name="Wire",
-    packages="wire",
+    name="Wire-String",
+    packages=setuptools.find_packages(),
     version="0.1",
     license="MIT",
     description="Python Strings But Better",
+    long_description=long_description,
     author="Tomi Adenekan",
     author_email="adenekanoluwatomison2024@serrahs.com",
     url="https://github.com/Code-Jym/wire",
@@ -13,10 +20,10 @@ setup(
     keywords=["strings", "python", "reimplementation"],
     install_requires = [],
     classifiers = [
-        "Development Status :: 5 Production/Stable",
-        "Intended Audience :: DeveRight-click on this link and chose Copy Link Address. Paste this link-address intolopers",
-        "Topic :: Software Development :: String Tools",
-        "License :: OSI Approves :: MIT License",
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Libraries",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.8",
     ]
 )
