@@ -8,11 +8,11 @@ setup(
     name = "Python_Wire",
     version = "1.1",
     author = "Tomi Adenekan",
-    author_email = "adenekanoluwatomison2024@serrahs.com",
+    author_email = "tominekan@outlook.com",
     description = ("Strings, But Better"),
     license = "MIT",
     keywords = "strings",
-    url = "https://github.com/Code-Jym/wire",
+    url = "https://github.com/tominekan/wire",
     long_description = read("README.md"),
     classifiers = [
         "Development Status :: 5 - Production/Stable",
